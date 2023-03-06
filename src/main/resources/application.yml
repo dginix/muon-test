@@ -1,1 +1,20 @@
+spring:
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://dpg-cg2q8aak728relqin510-a.oregon-postgres.render.com/muon_test
+    username: admin
+    password: "IW5GyDp403mBG4chJSPk2Gz5a6t5qVMN"
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: none
+        show_sql: false
+
+  liquibase:
+    enabled: false
+
+
 
