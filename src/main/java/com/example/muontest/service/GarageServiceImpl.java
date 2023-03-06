@@ -3,9 +3,11 @@ package com.example.muontest.service;
 import com.example.muontest.model.Garage;
 import com.example.muontest.repository.GarageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GarageServiceImpl implements GarageService {
 
     private final GarageRepository garageRepository;

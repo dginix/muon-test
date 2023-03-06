@@ -1,6 +1,8 @@
 package com.example.muontest.controller;
 
 import com.example.muontest.model.Garage;
+import com.example.muontest.service.GarageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -10,18 +12,25 @@ import java.util.Collections;
 @RequestMapping("/api/garage")
 public class GarageController {
 
-    @GetMapping("/")
+    private final GarageService garageService;
+
+    @Autowired
+    public GarageController(GarageService garageService) {
+        this.garageService = garageService;
+    }
+
+    @GetMapping()
     public Collection<Garage> getAllGarage() {
-        return Collections.emptyList();
+        return garageService.getAllGarage();
     }
 
     @GetMapping("/{id}")
     public Garage getGarageById(@PathVariable Long id) {
-        return new Garage();
+        return garageService.getGarageById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public Garage addGarage(@RequestBody Garage request) {
-        return new Garage();
+        return garageService.addGarage(request);
     }
 }
