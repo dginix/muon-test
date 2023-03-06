@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-car
+      author: Denis Kruchinin
+      changes:
+        - createTable:
+            tableName: car
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: driver_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: brand
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: garage_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_car_garage
+                    references: garage(id)
+                    nullable: false
