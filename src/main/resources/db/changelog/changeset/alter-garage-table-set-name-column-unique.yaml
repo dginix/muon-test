@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: alter-garage-table-set-name-column-unique
+      author: Denis Kruchinin
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: unique_name_garage
+            tableName: garage
