@@ -2,6 +2,7 @@ package com.example.muontest.service;
 
 import com.example.muontest.model.Car;
 import com.example.muontest.repository.CarRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car addCar(Car car) {
+    public Car addCar(@Valid Car car) {
         return carRepository.save(car);
     }
 }

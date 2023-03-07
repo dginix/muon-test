@@ -1,6 +1,7 @@
 package com.example.muontest.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import org.hibernate.Hibernate;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -15,9 +16,11 @@ public class Car {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Driver name must contain only letters")
     @Column(name = "driver_name", nullable = false)
     private String driverName;
 
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Brand must contain only letters")
     @Column(name = "brand", nullable = false)
     private String brand;
 
