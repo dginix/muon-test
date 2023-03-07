@@ -1,15 +1,15 @@
 package com.example.muontest.model;
 
+import com.example.muontest.util.json.CarSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.Hibernate;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Objects;
 
 @Entity
 @Table(name = "car")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonSerialize(using = CarSerializer.class)
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
