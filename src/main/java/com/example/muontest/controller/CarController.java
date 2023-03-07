@@ -2,6 +2,7 @@ package com.example.muontest.controller;
 
 import com.example.muontest.model.Car;
 import com.example.muontest.service.CarService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
@@ -28,7 +29,7 @@ public class CarController {
     }
 
     @PostMapping()
-    public Car addCar(@RequestBody Car request) {
+    public Car addCar(@RequestBody @Valid Car request) {
         return carService.addCar(request);
     }
 }

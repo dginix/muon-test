@@ -30,6 +30,6 @@ public class GlobalExceptionHandler  {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return new ErrorMessage(HttpStatus.BAD_REQUEST.value(), new Date(), exception.getMessage());
+        return new ErrorMessage(HttpStatus.BAD_REQUEST.value(), new Date(), "Error in fields", errors);
     }
 }
