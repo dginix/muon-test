@@ -1,28 +1,34 @@
 package com.example.muontest.controller;
 
 import com.example.muontest.model.Car;
+import com.example.muontest.service.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/car")
 public class CarController {
 
-    @GetMapping("/")
+    private final CarService carService;
+
+    @Autowired
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
+
+    @GetMapping()
     public Collection<Car> getAllCar() {
-        return Collections.emptyList();
+        return carService.getAllCar();
     }
 
     @GetMapping("/{id}")
     public Car getCarById(@PathVariable Long id) {
-        return new Car();
+        return carService.getCarById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public Car addCar(@RequestBody Car request) {
-        return new Car();
+        return carService.addCar(request);
     }
 }
