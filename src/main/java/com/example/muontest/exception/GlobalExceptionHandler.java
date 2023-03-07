@@ -13,12 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
-public class GlobalExceptionHandler  {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoSuchElementFoundException.class)
-    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorMessage handleNoSuchElementFoundException(NoSuchElementFoundException exception) {
-        return new ErrorMessage(HttpStatus.NOT_FOUND.value(), new Date(), exception.getMessage());
+        return new ErrorMessage(HttpStatus.BAD_REQUEST.value(), new Date(), exception.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -31,5 +31,11 @@ public class GlobalExceptionHandler  {
             errors.put(fieldName, errorMessage);
         });
         return new ErrorMessage(HttpStatus.BAD_REQUEST.value(), new Date(), "Error in fields", errors);
+    }
+
+    @ExceptionHandler(GarageCapacityException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ErrorMessage handleGarageCapacityException(GarageCapacityException exception) {
+        return new ErrorMessage(HttpStatus.BAD_REQUEST.value(), new Date(), exception.getMessage());
     }
 }

@@ -31,6 +31,7 @@ public class GarageController {
 
     @PostMapping()
     public Garage addGarage(@RequestBody Garage request) {
-        return garageService.addGarage(request);
+        Garage res = garageService.addGarage(request);
+        return res;
     }
 }

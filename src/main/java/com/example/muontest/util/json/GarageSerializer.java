@@ -17,13 +17,14 @@ public class GarageSerializer extends JsonSerializer<Garage> {
         jsonGenerator.writeStringField("name", garage.getName());
 
         jsonGenerator.writeArrayFieldStart("cars");
-
-        for (Car car : garage.getCars()) {
-            jsonGenerator.writeStartObject();
-            jsonGenerator.writeNumberField("id", car.getId());
-            jsonGenerator.writeStringField("driverName", car.getDriverName());
-            jsonGenerator.writeStringField("brand", car.getBrand());
-            jsonGenerator.writeEndObject();
+        if(garage.getCars() != null) {
+            for (Car car : garage.getCars()) {
+                jsonGenerator.writeStartObject();
+                jsonGenerator.writeNumberField("id", car.getId());
+                jsonGenerator.writeStringField("driverName", car.getDriverName());
+                jsonGenerator.writeStringField("brand", car.getBrand());
+                jsonGenerator.writeEndObject();
+            }
         }
         jsonGenerator.writeEndArray();
         jsonGenerator.writeEndObject();

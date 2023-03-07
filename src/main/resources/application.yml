@@ -13,5 +13,8 @@ spring:
   liquibase:
     enabled: true
 
+constants:
+  garage:
+    capacity: 2
 
 
