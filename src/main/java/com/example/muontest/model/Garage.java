@@ -1,11 +1,16 @@
 package com.example.muontest.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import org.hibernate.Hibernate;
+
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "garage")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Garage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +19,9 @@ public class Garage {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL)
+    private List<Car> Cars;
 
     public Garage() {
     }
@@ -37,6 +45,14 @@ public class Garage {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Car> getCars() {
+        return Cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        Cars = cars;
     }
 
     @Override

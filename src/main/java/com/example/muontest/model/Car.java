@@ -2,11 +2,13 @@ package com.example.muontest.model;
 
 import jakarta.persistence.*;
 import org.hibernate.Hibernate;
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Objects;
 
 @Entity
 @Table(name = "car")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
