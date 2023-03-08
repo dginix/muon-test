@@ -2,10 +2,15 @@ package com.example.muontest.util.mapper;
 
 import com.example.muontest.dto.CarDto;
 import com.example.muontest.dto.GarageDto;
+import com.example.muontest.model.Car;
 import com.example.muontest.model.Garage;
+import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class GarageMapperImpl implements GarageMapper{
 
     @Override
@@ -18,12 +23,18 @@ public class GarageMapperImpl implements GarageMapper{
         return new GarageDto(
                 entity.getId(),
                 entity.getName(),
-                entity.getCars().stream()
-                        .map(car -> new CarDto(
-                                car.getId(),
-                                car.getDriverName(),
-                                car.getBrand()))
-                        .collect(Collectors.toList())
+                obtainCarDtoList(entity.getCars())
         );
+    }
+
+    public List<CarDto> obtainCarDtoList (Collection<Car> carList) {
+        if (carList != null) {
+            return carList.stream()
+                    .map(car -> new CarDto(car.getId(), car.getDriverName(), car.getBrand()))
+                    .collect(Collectors.toList());
+        }
+        else {
+            return null;
+        }
     }
 }
