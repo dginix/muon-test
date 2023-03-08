@@ -17,7 +17,7 @@ public class Garage {
     private String name;
 
     @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL)
-    private List<Car> Cars;
+    private List<Car> cars;
 
     public Garage() {
     }
@@ -30,7 +30,7 @@ public class Garage {
     public Garage(Long id, String name, List<Car> cars) {
         this.id = id;
         this.name = name;
-        Cars = cars;
+        this.cars = cars;
     }
 
     public Long getId() {
@@ -50,11 +50,11 @@ public class Garage {
     }
 
     public List<Car> getCars() {
-        return Cars;
+        return cars;
     }
 
     public void setCars(List<Car> cars) {
-        Cars = cars;
+        this.cars = cars;
     }
 
     @Override

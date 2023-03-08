@@ -18,7 +18,7 @@ public class Car {
     @Column(name = "brand", nullable = false)
     private String brand;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "garage_id")
     private Garage garage;
 

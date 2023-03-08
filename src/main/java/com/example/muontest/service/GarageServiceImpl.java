@@ -24,7 +24,7 @@ public class GarageServiceImpl implements GarageService {
 
     @Override
     public List<GarageDto> getAllGarage() {
-        return garageRepository.findAll().stream()
+        return garageRepository.findAllGarage().stream()
                 .map(garageMapper::toDto)
                 .collect(Collectors.toList());
     }
