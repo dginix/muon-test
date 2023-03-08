@@ -1,6 +1,6 @@
 package com.example.muontest.controller;
 
-import com.example.muontest.model.Car;
+import com.example.muontest.dto.CarDto;
 import com.example.muontest.service.CarService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +19,17 @@ public class CarController {
     }
 
     @GetMapping()
-    public Collection<Car> getAllCar() {
+    public Collection<CarDto> getAllCar() {
         return carService.getAllCar();
     }
 
     @GetMapping("/{id}")
-    public Car getCarById(@PathVariable Long id) {
+    public CarDto getCarById(@PathVariable Long id) {
         return carService.getCarById(id);
     }
 
     @PostMapping()
-    public Car addCar(@RequestBody @Valid Car request) {
+    public CarDto addCar(@RequestBody @Valid CarDto request) {
         return carService.addCar(request);
     }
 }

@@ -19,6 +19,9 @@ public class CarDto {
         this.brand = brand;
     }
 
+    public CarDto() {
+    }
+
     public Long getId() {
         return id;
     }
