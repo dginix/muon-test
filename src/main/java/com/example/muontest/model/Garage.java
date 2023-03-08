@@ -30,6 +30,12 @@ public class Garage {
         this.name = name;
     }
 
+    public Garage(Long id, String name, List<Car> cars) {
+        this.id = id;
+        this.name = name;
+        Cars = cars;
+    }
+
     public Long getId() {
         return id;
     }
