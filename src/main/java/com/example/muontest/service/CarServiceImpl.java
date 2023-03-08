@@ -54,7 +54,7 @@ public class CarServiceImpl implements CarService {
                 .orElseThrow(() -> new NoSuchElementFoundException("Garage with this number does not exist"));
 
         if (thisCarGarage.getCars().size() >= GARAGE_CAPACITY ) {
-            throw new GarageCapacityException("Garage is full");
+            throw new GarageCapacityException("Garage is full, the maximum capacity is " + GARAGE_CAPACITY + " cars");
         }
         else {
             return carMapper.toDto(carRepository.save(carMapper.toEntity(car)));
