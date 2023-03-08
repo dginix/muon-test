@@ -1,7 +1,5 @@
 package com.example.muontest.model;
 
-import com.example.muontest.util.json.GarageSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import org.hibernate.Hibernate;
 import java.util.List;
@@ -9,7 +7,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "garage")
-@JsonSerialize(using = GarageSerializer.class)
 public class Garage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

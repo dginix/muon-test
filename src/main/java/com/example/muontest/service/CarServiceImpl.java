@@ -7,6 +7,7 @@ import com.example.muontest.model.Garage;
 import com.example.muontest.repository.CarRepository;
 import com.example.muontest.repository.GarageRepository;
 import com.example.muontest.util.mapper.CarMapper;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarDto addCar(CarDto car) {
+    public CarDto addCar(@Valid CarDto car) {
 
         Garage thisCarGarage = garageRepository.findById(car.getGarageId())
                 .orElseThrow(() -> new NoSuchElementFoundException("Garage with this number does not exist"));

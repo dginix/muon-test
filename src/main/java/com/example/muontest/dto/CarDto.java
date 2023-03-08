@@ -1,9 +1,15 @@
 package com.example.muontest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.Pattern;
+
 public class CarDto {
     private Long id;
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Driver name must contain only letters")
     private String driverName;
+    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Brand must contain only letters")
     private String brand;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long garageId;
 
     public CarDto(Long id, String driverName, String brand, Long garageId) {

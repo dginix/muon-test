@@ -1,26 +1,20 @@
 package com.example.muontest.model;
 
-import com.example.muontest.util.json.CarSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import org.hibernate.Hibernate;
 import java.util.Objects;
 
 @Entity
 @Table(name = "car")
-@JsonSerialize(using = CarSerializer.class)
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Driver name must contain only letters")
     @Column(name = "driver_name", nullable = false)
     private String driverName;
 
-    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Brand must contain only letters")
     @Column(name = "brand", nullable = false)
     private String brand;
 

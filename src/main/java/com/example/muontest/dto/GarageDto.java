@@ -1,10 +1,13 @@
 package com.example.muontest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.List;
 
 public class GarageDto {
     private Long id;
     private String name;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<CarDto> cars;
 
     public GarageDto(Long id, String name, List<CarDto> cars) {
