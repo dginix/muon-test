@@ -16,6 +16,9 @@ public class GarageDto {
         this.cars = cars;
     }
 
+    public GarageDto() {
+    }
+
     public Long getId() {
         return id;
     }
