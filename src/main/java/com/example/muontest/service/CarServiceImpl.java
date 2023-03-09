@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,7 +42,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDto getCarById(Long id) {
         return carMapper.toDto(
-                carRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Car not found with this id"))
+                carRepository.findById(id).orElseThrow(() -> new NoSuchElementFoundException("Car not found with this id"))
         );
     }
 
